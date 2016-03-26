@@ -1,3 +1,3 @@
 $(document).ready(function(){
-    $('#title-main').hide().delay(1000).fadeIn(5000);
+    $('#title-main').hide().delay(0).fadeIn(10000);
 });

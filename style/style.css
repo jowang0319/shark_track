@@ -30,15 +30,28 @@ article {
   #video-background {
   /*  making the video fullscreen  */
   opacity:0;
+  position: fixed;
+  right: 0; 
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+  width: auto; 
+  height: auto;
+  z-index: -100;
   }
 
   body {
   margin: 0;
   padding: 0;
   /*  Background fallback in case of IE8 & down, or in case video doens't load, such as with slower connections  */
-  background: url("../image/shark_small.png") no-repeat center center fixed; 
-  background-size: 100% 100%;
+  background: #333;
+  background:url(../image/shark_small.png)no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   }
+
 }
 
 @media all and (min-width: 426px) {
@@ -72,7 +85,11 @@ article {
   background: #333;
   background-attachment: fixed;
   background-size: cover;
-}
+  }
+
+  div#cover{
+    opacity:0;
+  }
 
 }
 
