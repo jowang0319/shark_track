@@ -1,23 +1,6 @@
-body {
-  margin: 0;
-  padding: 0;
-/*  Background fallback in case of IE8 & down, or in case video doens't load, such as with slower connections  */
-  background: #333;
-  background-attachment: fixed;
-  background-size: cover;
-}
 
-#video-background {
-/*  making the video fullscreen  */
-  position: fixed;
-  right: 0; 
-  bottom: 0;
-  min-width: 100%; 
-  min-height: 100%;
-  width: auto; 
-  height: auto;
-  z-index: -100;
-}
+
+
 
 article {
 /*  just a fancy border  */
@@ -30,18 +13,68 @@ article {
   margin: 10px;
 }
 
-h1 {
-  position: absolute;
-  top: 60%;
-  width: 100%;
-  font-size: 70px;
-  letter-spacing: 3px;
-  color: #fff;
-  font-family:  sans-serif;
-  text-align: center;
+
+
+@media all and (max-width: 425px) {
+  h1 {
+    position: absolute;
+    top: 60vh;
+    width: 100%;
+    font-size: 9vw;
+    letter-spacing: 3px;
+    color: #fff;
+    font-family:  sans-serif;
+    text-align: center;
+  }
+
+  #video-background {
+  /*  making the video fullscreen  */
+  opacity:0;
+  }
+
+  body {
+  margin: 0;
+  padding: 0;
+  /*  Background fallback in case of IE8 & down, or in case video doens't load, such as with slower connections  */
+  background: url("../image/shark_small.png") no-repeat center center fixed; 
+  background-size: width;
+  }
 }
 
+@media all and (min-width: 426px) {
+  h1 {
+    position: absolute;
+    top: 60%;
+    width: 100%;
+    font-size: 5vw;
+    letter-spacing: 3px;
+    color: #fff;
+    font-family:  sans-serif;
+    text-align: center;
+  }
 
+  #video-background {
+  /*  making the video fullscreen  */
+  position: fixed;
+  right: 0; 
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+  width: auto; 
+  height: auto;
+  z-index: -100;
+  }
+
+  body {
+  margin: 0;
+  padding: 0;
+/*  Background fallback in case of IE8 & down, or in case video doens't load, such as with slower connections  */
+  background: #333;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+}
 
 
 
