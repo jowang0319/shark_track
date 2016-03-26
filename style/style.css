@@ -37,7 +37,7 @@ article {
   padding: 0;
   /*  Background fallback in case of IE8 & down, or in case video doens't load, such as with slower connections  */
   background: url("../image/shark_small.png") no-repeat center center fixed; 
-  background-size: width;
+  background-size: 100%;
   }
 }
 
