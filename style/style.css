@@ -20,12 +20,31 @@ article {
     position: absolute;
     top: 60vh;
     width: 100%;
-    font-size: 9vw;
+    font-size: 6vw;
     letter-spacing: 3px;
     color: #fff;
-    font-family:  sans-serif;
+    font-family: 'Martel', serif;
     text-align: center;
   }
+
+  span#author {
+    font-size: 3vw;
+    /*letter-spacing: 3px;*/
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+  }
+
+  hr#divider{
+    display: block;
+    margin-top: 0.2em;
+    margin-bottom: -0.2em;
+    margin-left: 38%;
+    margin-right: 38%;
+    border-style: inset;
+    border-width: 1px;
+  }
+
 
   #video-background {
   /*  making the video fullscreen  */
@@ -59,12 +78,31 @@ article {
     position: absolute;
     top: 60%;
     width: 100%;
-    font-size: 5vw;
+    font-size: 3vw;
     letter-spacing: 3px;
     color: #fff;
-    font-family:  sans-serif;
+    font-family: 'Martel', serif;
     text-align: center;
   }
+
+  span#author {
+    font-size: 1vw;
+    /*letter-spacing: 3px;*/
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+  }
+
+  hr#divider{
+    display: block;
+    margin-top: 0.2em;
+    margin-bottom: -0.4em;
+    margin-left: 42%;
+    margin-right: 42%;
+    border-style: inset;
+    border-width: 1px;
+  }
+
 
   #video-background {
   /*  making the video fullscreen  */
