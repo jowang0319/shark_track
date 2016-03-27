@@ -1,7 +1,5 @@
 
 
-
-
 article {
 /*  just a fancy border  */
   position: absolute;
@@ -34,6 +32,22 @@ article {
     font-family: 'Lato', sans-serif;
     text-align: center;
   }
+
+  div#short-intro {
+    font-size: 3.5vw;
+    letter-spacing: 2px;
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    margin-left: 3%;
+    margin-right: 3%;
+    text-align: center;
+    margin-top: 200%;
+  }
+
+  p#mobile-style{
+    margin-top: 80%;
+  }
+
 
   hr#divider{
     display: block;
@@ -87,10 +101,21 @@ article {
 
   span#author {
     font-size: 1vw;
-    /*letter-spacing: 3px;*/
+    letter-spacing: 2px;
     color: #fff;
     font-family: 'Lato', sans-serif;
     text-align: center;
+  }
+
+  div#short-intro {
+    font-size: 1.3vw;
+    letter-spacing: 2px;
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    margin-left: 31%;
+    margin-right: 31%;
+    text-align: center;
+    margin-top: 100%;
   }
 
   hr#divider{
