@@ -1,4 +1,4 @@
-var margin = 60,
+var margin = 40,
     width = parseInt(d3.select("#graph").style("width")) - margin*2,
     height = parseInt(d3.select("#graph").style("height")) - margin*2;
 
@@ -14,13 +14,17 @@ var xAxis = d3.svg.axis()
     .scale(xScale)
     .orient("bottom");
 
-var yAxis = d3.svg.axis()
-    .scale(yScale)
-    .orient("left");
+// var yAxis = d3.svg.axis()
+//     .scale(yScale)
+//     .orient("left");
 
 var line = d3.svg.line()
-    .x(function(d) { return xScale(d.year); })
+    .x(function(d) { return xScale(d.yearNew); })
     .y(function(d) { return yScale(d.capture); });
+
+var tooltip = d3.select("body")
+        .append("div")
+        .attr("class", "tooltip");
 
 var dateFormat = d3.time.format("%Y");
 
@@ -32,13 +36,13 @@ var graph = d3.select("#graph")
 
 d3.csv("data/data_long.csv", function(error, data) {
   data.forEach(function(d) {
-     d.year = d3.time.format("%Y").parse(d.year);
+     d.yearNew = d3.time.format("%Y").parse(d.year);
      d.capture = +d.capture;
     // console.log(data);
   });
 
   xScale.domain(d3.extent(data, function(d){
-            return d.year;
+            return d.yearNew;
             })
         );
   yScale.domain([0, d3.max(data, function(d) {
@@ -51,20 +55,67 @@ d3.csv("data/data_long.csv", function(error, data) {
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis);
 
-  graph.append("g")
-      .attr("class", "y axis")
-      .call(yAxis)
-    .append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", ".71em")
-      .style("text-anchor", "end")
-      .text("Capture");
+  var circles = graph.selectAll("circle")
+                .data(data)
+                .enter()
+                .append("circle")
+                .attr("class","circles");
+
+  circles.attr("cx", function(d) {
+            return xScale(d.yearNew);
+          })
+          .attr("cy", function(d) {
+            return yScale(d.capture);
+          })
+          .attr("r", 3)
+          .style("opacity", 0)
+          .attr("fill", "rgba(115,176,198,0.9)"); 
+
+  circles
+          .on("mouseover", mouseoverFunc)
+          .on("mousemove", mousemoveFunc)
+          .on("mouseout", mouseoutFunc);
+
+  function mouseoverFunc(d) {
+          d3.select(this)
+            .transition()
+            .style("opacity", 0.8)
+            .attr("r", 9);
+          tooltip
+            .style("display", null) // this removes the display none setting from it
+            .html("<p>" + d.capture + " sharks were captured in " + d.year);
+          }
+
+  function mousemoveFunc(d) {
+          tooltip
+            .style("top", (d3.event.pageY - 10) + "px" )
+            .style("left", (d3.event.pageX + 10) + "px");
+          }
+
+  function mouseoutFunc(d) {
+          d3.select(this)
+            .transition()
+            .style("opacity", 0)
+            .attr("r", 3);
+          tooltip.style("display", "none");  // this sets it to invisible!
+        }
+
+  // graph.append("g")
+  //     .attr("class", "y axis")
+  //     .call(yAxis)
+  //   .append("text")
+  //     .attr("transform", "rotate(-90)")
+  //     .attr("y", 6)
+  //     .attr("dy", ".71em")
+  //     .style("text-anchor", "end")
+  //     .text("Capture");
 
   graph.append("path")
       .datum(data)
       .attr("class", "line")
       .attr("d", line);
+
+
 
   function resize() {
     var width = parseInt(d3.select("#graph").style("width")) - margin*2,
@@ -73,21 +124,32 @@ d3.csv("data/data_long.csv", function(error, data) {
     xScale.range([0, width]).nice(d3.time.year);
     yScale.range([height, 0]).nice();
 
-    yAxis.ticks(Math.max(height/50, 2));
+    // yAxis.ticks(Math.max(height/50, 2));
     xAxis.ticks(Math.max(width/50, 2));
 
     graph.select('.x.axis')
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis);
 
-    graph.select('.y.axis')
-      .call(yAxis);
+    // graph.select('.y.axis')
+    //   .call(yAxis);
 
     graph.selectAll('.line')
       .attr("d", line);
+
+    graph.selectAll('.circles')
+      .attr("cx", function(d) {
+            return xScale(d.yearNew);
+          })
+          .attr("cy", function(d) {
+            return yScale(d.capture);
+          });
   }
 
-  d3.select(window).on('resize', resize); 
+    d3.select(window).on('resize', resize); 
 
-  resize();
-});
+    resize();
+});//End of csv.
+
+
+

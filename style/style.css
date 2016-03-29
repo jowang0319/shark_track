@@ -108,7 +108,7 @@ article {
   }
 
   div#short-intro {
-    font-size: 1.3vw;
+    font-size: 1.2vw;
     letter-spacing: 2px;
     color: #fff;
     font-family: 'Lato', sans-serif;
@@ -154,10 +154,18 @@ article {
     opacity:0;
   }
 
+
 }
 
 
+a:link{
+  color: white;
+}
 
+a:visited {
+    text-decoration: none;
+    color:rgb(115,176,198);
+}
 
 
 
