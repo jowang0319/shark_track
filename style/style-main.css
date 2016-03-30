@@ -3,7 +3,6 @@
     float: none;
     width: auto;
     /*background-color: orange;*/
-	opacity:0.5;
 	margin-top: 2%;
 	margin-bottom: 2%;
   	}
@@ -12,6 +11,7 @@
   		position:fixed;
   		bottom:0px;
   		margin-right: 2.5%;
+  		background-color:rgba(0,0,0,0);
   	}
 
   	p.intro-content{
@@ -26,7 +26,7 @@
 
 	p.left-content{
 		font-size: 4vw;
-		margin-top: 5%;
+		margin-top: 0%;
 	}
 
 	h2.title-content{
@@ -86,6 +86,17 @@
 	/*	margin-right: 2%;*/
 		margin-top: 6%;
 		margin-bottom: 1%;
+	}
+
+
+	.title-main{
+		background-color:rgba(0,0,0,0);
+		float:left;
+		width: 72%;
+		margin-left: 2%;
+		margin-top: 1%;
+		margin-bottom: 2%;
+		margin-right: 2%;
 	}
 }
 
@@ -183,6 +194,17 @@
 	}
 
 
+	.title-main{
+		background-color:rgba(0,0,0,0);
+		float:left;
+		width: 72%;
+		margin-left: 2%;
+		margin-top: 0%;
+		margin-bottom: 2%;
+		margin-right: 2%;
+	}
+
+
 
 }
 
@@ -196,15 +218,6 @@
 
 
 
-.title-main{
-	background-color: white;
-	float:left;
-	width: 72%;
-	margin-left: 2%;
-	margin-top: 0%;
-	margin-bottom: 2%;
-	margin-right: 2%;
-}
 
 
 .tooltip {
