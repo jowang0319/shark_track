@@ -1,4 +1,4 @@
-var margin = 30,
+var margin = 35,
     width = parseInt(d3.select("#graph").style("width")) - margin*2,
     height = parseInt(d3.select("#graph").style("height")) - margin*2;
 
