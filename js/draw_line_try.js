@@ -111,10 +111,36 @@ d3.csv("data/data_long.csv", function(error, data) {
   //     .text("Capture");
 
   graph.append("path")
-      .datum(data)
+      // .datum(data)
       .attr("class", "line")
-      .attr("d", line);
+      // .attr("d", line);
 
+  function getSmoothInterpolation() {
+  var interpolate = d3.scale.linear()
+        .domain([0,1])
+        .range([1, data.length + 1]);
+
+  return function(t) {
+    var flooredX = Math.floor(interpolate(t));
+    var interpolatedLine = data.slice(0, flooredX);
+
+    if (flooredX > 0 && flooredX < data.length) {
+        var weight = interpolate(t) - flooredX;
+        var weightedLineAverage = data[flooredX].y * weight + data[flooredX-1].y * (1-weight);
+        interpolatedLine.push({"x":interpolate(t)-1, "y":weightedLineAverage});
+    }
+
+    return line(interpolatedLine);
+  }
+}
+
+// d3.select("#button2")
+//   .on("click", function() {
+//       d3.select("#graph .line")
+//       .transition()
+//       .duration(6000)
+//       .attrTween("d", getSmoothInterpolation);
+//   });
 
 
   function resize() {
@@ -135,7 +161,9 @@ d3.csv("data/data_long.csv", function(error, data) {
     //   .call(yAxis);
 
     graph.selectAll('.line')
-      .attr("d", line);
+      .transition()
+      .duration(6000)
+      .attrTween("d", getSmoothInterpolation);;
 
     graph.selectAll('.circles')
       .attr("cx", function(d) {

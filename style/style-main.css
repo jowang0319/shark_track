@@ -57,8 +57,8 @@
 	}
 
 	path.line {
-            stroke: black;
-            stroke-width: 1;
+            stroke: rgba(0,70,100,0.8);
+            stroke-width: 3;
             fill: none;
         }
 
