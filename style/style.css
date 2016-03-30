@@ -86,8 +86,80 @@ article {
   }
 
 }
+@media all and (min-width: 426px) and (max-width: 768px) {
+  h1 {
+    position: absolute;
+    top: 60vh;
+    width: 100%;
+    font-size: 3vw;
+    letter-spacing: 3px;
+    color: #fff;
+    font-family: 'Martel', serif;
+    text-align: center;
+  }
 
-@media all and (min-width: 426px) {
+  span#author {
+    font-size: 1.5vw;
+    /*letter-spacing: 3px;*/
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+  }
+
+  div#short-intro {
+    font-size: 2vw;
+    letter-spacing: 2px;
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    margin-left: 25%;
+    margin-right: 25%;
+    text-align: center;
+    margin-top: 200%;
+  }
+
+  p#mobile-style{
+    margin-top: 80%;
+  }
+
+
+  hr#divider{
+    display: block;
+    margin-top: 0.2em;
+    margin-bottom: -0.2em;
+    margin-left: 38%;
+    margin-right: 38%;
+    border-style: inset;
+    border-width: 1px;
+  }
+
+
+    #video-background {
+    /*  making the video fullscreen  */
+    opacity:0;
+    position: fixed;
+    right: 0; 
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    width: auto; 
+    height: auto;
+    z-index: -100;
+    }
+
+  body {
+  margin: 0;
+  padding: 0;
+  /*  Background fallback in case of IE8 & down, or in case video doens't load, such as with slower connections  */
+  background: #333;
+  background:url(../image/shark_small.png)no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  }
+}
+
+@media all and (min-width: 769px) {
   h1 {
     position: absolute;
     top: 60%;
