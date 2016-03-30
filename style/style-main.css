@@ -21,7 +21,7 @@
 	padding-left: 1%;
 	padding-right: 1%;
 	opacity: 0.8;
-	padding-top: 1%;
+	padding-top: 0%;
 	}
 
 	p.left-content{
@@ -30,7 +30,7 @@
 	}
 
 	h2.title-content{
-	margin-top:-2%;
+	margin-top:-1%;
 	margin-bottom: 0%;
 	margin-left: 4%;
 	text-align: center;
@@ -64,9 +64,9 @@
 
     #graph {
           width: 100%;
-          height: 60vh;
+          height: 58vh;
           position: absolute;
-          margin-top: -5%;
+          margin-top: -8%;
           margin-left: -1%;
         }
 }
