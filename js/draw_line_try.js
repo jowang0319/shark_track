@@ -38,6 +38,8 @@ d3.csv("data/data_long.csv", function(error, data) {
   data.forEach(function(d) {
      d.yearNew = d3.time.format("%Y").parse(d.year);
      d.capture = +d.capture;
+     d.x = d3.time.format("%Y").parse(d.year);
+     d.y = +d.capture;
     // console.log(data);
   });
 
@@ -67,7 +69,7 @@ d3.csv("data/data_long.csv", function(error, data) {
           .attr("cy", function(d) {
             return yScale(d.capture);
           })
-          .attr("r", 3)
+          .attr("r", 5)
           .style("opacity", 0)
           .attr("fill", "rgba(115,176,198,0.9)"); 
 
@@ -96,7 +98,7 @@ d3.csv("data/data_long.csv", function(error, data) {
           d3.select(this)
             .transition()
             .style("opacity", 0)
-            .attr("r", 3);
+            .attr("r", 5);
           tooltip.style("display", "none");  // this sets it to invisible!
         }
 
@@ -114,6 +116,7 @@ d3.csv("data/data_long.csv", function(error, data) {
       // .datum(data)
       .attr("class", "line")
       // .attr("d", line);
+
 
   function getSmoothInterpolation() {
   var interpolate = d3.scale.linear()
