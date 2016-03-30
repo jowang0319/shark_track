@@ -125,7 +125,7 @@ d3.csv("data/data_long.csv", function(error, data) {
     yScale.range([height, 0]).nice();
 
     // yAxis.ticks(Math.max(height/50, 2));
-    xAxis.ticks(Math.max(width/50, 2));
+    xAxis.ticks(Math.max(width/100, 2));
 
     graph.select('.x.axis')
       .attr("transform", "translate(0," + height + ")")
