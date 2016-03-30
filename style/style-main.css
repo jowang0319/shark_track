@@ -74,7 +74,7 @@
     .arrow-left{
 		float:left;
 		width: 10%;
-		height:50px;
+		height:6vh;
 		/*margin-left: 2%;*/
 		margin-top: 7%;
 		margin-bottom: 1%;
@@ -100,8 +100,111 @@
 	}
 }
 
+@media all and (min-width: 426px) and (max-width: 768px) {
 
-@media all and (min-width: 420px) {
+	.control-main .content-main {
+    float: none;
+    width: auto;
+    /*background-color: orange;*/
+	margin-top: 2%;
+	margin-bottom: 2%;
+  	}
+
+  	.control-main{
+  		position:fixed;
+  		bottom:0px;
+  		margin-right: 2%;
+  		background-color:rgba(0,0,0,0);
+  	}
+
+  	p.intro-content{
+	font-size: 3vw;
+	margin-top: 3%;
+	color:white;
+	padding-left: 1%;
+	padding-right: 1%;
+	opacity: 0.8;
+	padding-top: 0%;
+	}
+
+	p.left-content{
+		font-size: 4vw;
+		margin-top: 5%;
+	}
+
+	h2.title-content{
+	margin-top:4%;
+	margin-bottom: 0%;
+	margin-left: 2%;
+	text-align: center;
+	font-size: 7vw;
+	text-align: center;
+	font-family: 'Alegreya SC', serif;
+	color: black;
+	background-color:rgba(0,0,0,0);
+	}
+
+	div.intro{
+	margin-top: -2%;
+	margin-bottom: 0%;
+	margin-left: 0%;
+	margin-right: 0%;
+	background-color: rgba(0,70,100,0.4);
+	width:90%;
+	float:left;
+	height:27vh;
+	padding-left: 5%;
+	padding-right: 5%;
+	overflow: scroll;
+	border-radius: 25px;
+	}
+
+	path.line {
+            stroke: rgba(0,70,100,0.8);
+            stroke-width: 3;
+            fill: none;
+        }
+
+
+    #graph {
+          width: 100%;
+          height: 60vh;
+          position: absolute;
+          margin-top: -2%;
+          margin-left: -1%;
+        }
+
+    .arrow-left{
+		float:left;
+		width: 7%;
+		margin-left: 5%;
+		margin-top: 7%;
+		margin-bottom: 1%;
+	}
+
+	.arrow-right{
+		float:right;
+		width: 7%;
+		margin-right: 5%;
+		margin-top: 7%;
+		margin-bottom: 1%;
+	}
+
+
+	.title-main{
+		background-color:rgba(0,0,0,0);
+		float:left;
+		width: 72%;
+		margin-left: 2%;
+		margin-top: 1%;
+		margin-bottom: 2%;
+		margin-right: 2%;
+	}
+
+}
+
+
+@media all and (min-width: 769px) {
 
 	.content-main{
 /*		background-color: orange;*/
