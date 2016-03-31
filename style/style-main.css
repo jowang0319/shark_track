@@ -15,13 +15,14 @@
   	}
 
   	p.intro-content{
-	font-size: 4vw;
+	font-size: 3.5vw;
 	margin-top: 3%;
 	color:white;
 	padding-left: 1%;
 	padding-right: 1%;
 	opacity: 0.8;
 	padding-top: 0%;
+	font-family: 'muli',sans-serif;
 	}
 
 	p.left-content{
@@ -126,13 +127,14 @@
   	}
 
   	p.intro-content{
-	font-size: 3vw;
+	font-size: 2.2vw;
 	margin-top: 3%;
 	color:white;
 	padding-left: 1%;
 	padding-right: 1%;
 	opacity: 0.8;
 	padding-top: 0%;
+	font-family: 'muli',sans-serif;
 	}
 
 	p.left-content{
@@ -240,12 +242,13 @@
 		margin-right: 3%;
 	}
 	p.intro-content{
-		font-size: 1.2vw;
+		font-size: 1.0vw;
 		margin-top: 5%;
 		margin-left: 2%;
 		margin-right: 2%;
 		margin-bottom: 6%;
 		opacity: 0.8;
+		font-family: 'muli',sans-serif;
 	}
 
 	p.left-content{
