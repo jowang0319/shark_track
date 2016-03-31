@@ -31,7 +31,7 @@ var dateFormat = d3.time.format("%Y");
 var graph = d3.select("#graph")
     .attr("width", width + margin*2)
     .attr("height", height + margin*2)
-  .append("g")
+    .append("g")
     .attr("transform", "translate(" + margin + "," + margin + ")");
 
 d3.csv("data/data_long.csv", function(error, data) {
@@ -117,6 +117,22 @@ d3.csv("data/data_long.csv", function(error, data) {
       .attr("class", "line")
       // .attr("d", line);
 
+  graph.append("text")
+      // .attr("x", 0)
+      // .attr("y","20vh")
+      .text("· Hover over the line to see more details.")
+      .attr("class","notice")
+      .attr("fill","#ccc")
+      .attr("stroke","rgba(0,0,0,0)");
+
+  graph.append("text")
+      // .attr("x", 0)
+      // .attr("y","20vh")
+      .text("· 加薪姐姐，加label靠你啦！")
+      .attr("class","notice2")
+      .attr("fill","#ccc")
+      .attr("stroke","rgba(0,0,0,0)");
+
 
   function getSmoothInterpolation() {
   var interpolate = d3.scale.linear()
@@ -175,6 +191,14 @@ d3.csv("data/data_long.csv", function(error, data) {
           .attr("cy", function(d) {
             return yScale(d.capture);
           });
+
+    graph.selectAll(".notice")
+      .attr("x",0)
+      .attr("y", height/4.5);
+
+    graph.selectAll(".notice2")
+      .attr("x",0)
+      .attr("y", height/4);
   }
 
     d3.select(window).on('resize', resize); 

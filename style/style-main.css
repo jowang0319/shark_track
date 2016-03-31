@@ -99,6 +99,12 @@
 		margin-bottom: 2%;
 		margin-right: 2%;
 	}
+
+	text.notice{
+		font-size: 3vw;
+		opacity: 0 ;
+	}
+
 }
 
 @media all and (min-width: 426px) and (max-width: 768px) {
@@ -201,6 +207,10 @@
 		margin-top: 1%;
 		margin-bottom: 2%;
 		margin-right: 2%;
+	}
+
+	text.notice{
+		font-size: 2vw;
 	}
 
 }
@@ -310,6 +320,9 @@
 		margin-right: 2%;
 	}
 
+	text.notice{
+		font-size: 1.2vw;
+	}
 
 
 }
