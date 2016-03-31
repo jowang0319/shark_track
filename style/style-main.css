@@ -381,7 +381,9 @@ a:hover{
 	opacity: 0.7;
 }
 
-
+.circles{
+	cursor: pointer;
+}
 
 
 
