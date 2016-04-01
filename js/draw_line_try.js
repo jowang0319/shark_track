@@ -78,6 +78,25 @@ d3.csv("data/data_long.csv", function(error, data) {
           .on("mousemove", mousemoveFunc)
           .on("mouseout", mouseoutFunc);
 
+//set the label:
+graph.selectAll("text")
+      .data(data)
+      .enter()
+      .append("text")
+      .attr("transform", function(d,i){
+        if(d.year === "1965" || d.year === "2011"){
+          return "translate("+ xScale(d.x)+ "," + (yScale(d.y)-20)+ ")";
+        }
+      })
+      .text(function(d,i){
+        if(d.year === "1965" || d.year === "2011"){
+        return d.capture;          
+        }
+      })
+      .attr("font-family", "'Lato', sans-serif")
+      .attr("font-size", "1.5vw")
+      .attr("fill", "rgba(115,176,198,0.9)");
+
   function mouseoverFunc(d) {
           d3.select(this)
             .transition()
