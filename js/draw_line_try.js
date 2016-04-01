@@ -79,23 +79,10 @@ d3.csv("data/data_long.csv", function(error, data) {
           .on("mouseout", mouseoutFunc);
 
 //set the label:
-graph.selectAll("text")
+  var text = graph.selectAll("text")
       .data(data)
       .enter()
-      .append("text")
-      .attr("transform", function(d,i){
-        if(d.year === "1965" || d.year === "2011"){
-          return "translate("+ xScale(d.x)+ "," + (yScale(d.y)-20)+ ")";
-        }
-      })
-      .text(function(d,i){
-        if(d.year === "1965" || d.year === "2011"){
-        return d.capture;          
-        }
-      })
-      .attr("font-family", "'Lato', sans-serif")
-      .attr("font-size", "1.5vw")
-      .attr("fill", "rgba(115,176,198,0.9)");
+      .append("text");
 
   function mouseoverFunc(d) {
           d3.select(this)
@@ -141,14 +128,6 @@ graph.selectAll("text")
       // .attr("y","20vh")
       .text("· Hover over the line to see more details.")
       .attr("class","notice")
-      .attr("fill","#ccc")
-      .attr("stroke","rgba(0,0,0,0)");
-
-  graph.append("text")
-      // .attr("x", 0)
-      // .attr("y","20vh")
-      .text("· 加薪姐姐，加label靠你啦！")
-      .attr("class","notice2")
       .attr("fill","#ccc")
       .attr("stroke","rgba(0,0,0,0)");
 
@@ -218,6 +197,50 @@ graph.selectAll("text")
     graph.selectAll(".notice2")
       .attr("x",0)
       .attr("y", height/4);
+
+    // function getTextWidth(text, fontSize, fontFace) {
+    //   var a = document.createElement('canvas');
+    //   var b = a.getContext('2d');
+    //   b.font = fontSize + 'px ' + fontFace;
+    //   return b.measureText(text).width;
+    // } 
+
+    text
+      .attr("transform", function(d,i){
+          if(d.year === "1965" || d.year === "2011" ){
+            return "translate("+ xScale(d.x)+ "," + (yScale(d.y))+ ")";
+          }
+        })
+        .text(function(d,i){
+          if(d.year === "1965" || d.year === "2011"){
+          return d.capture           
+          }
+        })
+        .attr("font-family", "'Lato', sans-serif")
+        .attr("font-size", "1.3vw")
+        .attr("dx","-4.5em")
+        .attr("dy", "1.5em")
+        .attr("fill", "rgba(115,176,198,0.9)")
+        .attr("class","labelOnLine");
+
+    // text
+    //   .attr("transform", function(d,i){
+    //       if( ){
+    //         return "translate("+ xScale(d.x)+ "," + (yScale(d.y))+ ")";
+    //       }
+    //     })
+    //     .text(function(d,i){
+    //       if( d.year === "2011"){
+    //       return d.capture;          
+    //       }
+    //     })
+    //     .attr("font-family", "'Lato', sans-serif")
+    //     .attr("font-size", "1.3vw")
+    //     .attr("dx","-4.3em")
+    //     .attr("dy", "1.2em")
+    //     .attr("fill", "rgba(115,176,198,0.9)");
+
+
   }
 
     d3.select(window).on('resize', resize); 
