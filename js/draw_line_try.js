@@ -70,8 +70,8 @@ d3.csv("data/data_long.csv", function(error, data) {
             return yScale(d.capture);
           })
           .attr("r", 5)
-          .style("opacity", 0)
-          .attr("fill", "rgba(115,176,198,0.9)"); 
+          .attr("fill", "rgba(115,176,198,0.9)")
+          .attr("opacity",0); 
 
   circles
           .on("mouseover", mouseoverFunc)
@@ -183,20 +183,24 @@ d3.csv("data/data_long.csv", function(error, data) {
       .attrTween("d", getSmoothInterpolation);;
 
     graph.selectAll('.circles')
+      .transition()
+      .delay(5000)
+      .style("opacity", function(d){
+            if(d.year === "1965" || d.year === "2011" ){
+            return 0.8;
+          } else {return 0}
+          })
+      .duration(1000)
       .attr("cx", function(d) {
             return xScale(d.yearNew);
           })
-          .attr("cy", function(d) {
+      .attr("cy", function(d) {
             return yScale(d.capture);
           });
 
     graph.selectAll(".notice")
       .attr("x",0)
       .attr("y", height/4.5);
-
-    graph.selectAll(".notice2")
-      .attr("x",0)
-      .attr("y", height/4);
 
     // function getTextWidth(text, fontSize, fontFace) {
     //   var a = document.createElement('canvas');
@@ -206,6 +210,10 @@ d3.csv("data/data_long.csv", function(error, data) {
     // } 
 
     text
+      .transition()
+      .delay(5000)
+      .attr("opacity",1)
+      .duration(1000)
       .attr("transform", function(d,i){
           if(d.year === "1965" || d.year === "2011" ){
             return "translate("+ xScale(d.x)+ "," + (yScale(d.y))+ ")";
@@ -217,7 +225,7 @@ d3.csv("data/data_long.csv", function(error, data) {
           }
         })
         .attr("font-family", "'Lato', sans-serif")
-        .attr("font-size", "1.3vw")
+        // .attr("font-size", "1.3vw")
         .attr("dx","-4.5em")
         .attr("dy", "1.5em")
         .attr("fill", "rgba(115,176,198,0.9)")
