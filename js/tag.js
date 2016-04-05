@@ -25,8 +25,8 @@ var lesson6 = {
     this.scene = new THREE.Scene();
     this.scene.fog = new THREE.FogExp2(0xffffff, 0.0003);
 
-    var SCREEN_WIDTH = window.innerWidth * 0.67,
-        SCREEN_HEIGHT = window.innerHeight * 0.8;
+    var SCREEN_WIDTH = window.innerWidth ,
+        SCREEN_HEIGHT = window.innerHeight ;
 
     // prepare camera
     var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 1, FAR = 2000;
@@ -86,10 +86,13 @@ var lesson6 = {
     var oLoader = new THREE.OBJMTLLoader();
     oLoader.load('js/tag12.obj', 'js/tag12.mtl', function(object) {
 
-      object.position.x = -80;
+      var SCREEN_WIDTH = window.innerWidth ,
+        SCREEN_HEIGHT = window.innerHeight ;
+
+      object.position.x = -45;
       object.position.y = 0;
       object.position.z = 0;
-      object.scale.set(2, 2, 2);
+      object.scale.set(SCREEN_WIDTH/500, SCREEN_WIDTH/500, SCREEN_WIDTH/500);
       lesson6.scene.add(object);
     });
   }

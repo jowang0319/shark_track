@@ -110,6 +110,11 @@
 		font-size: 3vw;
 	}
 
+	canvas{
+		width: 100%;
+		height: 60%;
+	}
+
 }
 
 @media all and (min-width: 426px) and (max-width: 768px) {
@@ -221,6 +226,11 @@
 
 	text.labelOnLine{
 		font-size: 2.2vw;
+	}
+
+	canvas{
+	width: 100%;
+	height: 60%;
 	}
 
 }
@@ -346,6 +356,11 @@
 		display: ;
 	}
 
+	canvas{
+		width: 85%;
+		margin-left: -18%;
+}
+
 
 }
 
@@ -404,9 +419,7 @@ a:hover{
 	cursor: pointer;
 }
 
-canvas{
-	background-color: white;
-}
+
 
 
 
