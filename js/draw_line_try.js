@@ -69,7 +69,7 @@ d3.csv("data/data_long.csv", function(error, data) {
           .attr("cy", function(d) {
             return yScale(d.capture);
           })
-          .attr("r", 5)
+          .attr("r", 7)
           .attr("fill", "rgba(115,176,198,0.9)")
           .attr("opacity",0); 
 
@@ -88,7 +88,7 @@ d3.csv("data/data_long.csv", function(error, data) {
           d3.select(this)
             .transition()
             .style("opacity", 0.8)
-            .attr("r", 9);
+            .attr("r", 10);
           tooltip
             .style("display", null) // this removes the display none setting from it
             .html("<p>" + d.capture + " sharks were captured in " + d.year);
@@ -118,9 +118,10 @@ d3.csv("data/data_long.csv", function(error, data) {
   //     .style("text-anchor", "end")
   //     .text("Capture");
 
-  graph.append("path")
+  var path = graph.append("path")
       // .datum(data)
       .attr("class", "line")
+      .style("display","none");
       // .attr("d", line);
 
   graph.append("text")
@@ -151,6 +152,8 @@ d3.csv("data/data_long.csv", function(error, data) {
   }
 }
 
+
+
 // d3.select("#button2")
 //   .on("click", function() {
 //       d3.select("#graph .line")
@@ -177,10 +180,19 @@ d3.csv("data/data_long.csv", function(error, data) {
     // graph.select('.y.axis')
     //   .call(yAxis);
 
-    graph.selectAll('.line')
+    path
+      .attr("d", line(data));
+
+    var totalLength = path.node().getTotalLength();
+
+    path
+      .attr("stroke-dasharray", totalLength + " " + totalLength)
+      .attr("stroke-dashoffset", totalLength)
+      .style("display", null)
       .transition()
-      .duration(6000)
-      .attrTween("d", getSmoothInterpolation);;
+      .duration(5000)
+      .ease("linear")
+      .attr("stroke-dashoffset", 0);
 
     graph.selectAll('.circles')
       .transition()
@@ -226,27 +238,10 @@ d3.csv("data/data_long.csv", function(error, data) {
         })
         .attr("font-family", "'Lato', sans-serif")
         // .attr("font-size", "1.3vw")
-        .attr("dx","-4.5em")
+        .attr("dx","-4.3em")
         .attr("dy", "1.5em")
         .attr("fill", "rgba(115,176,198,0.9)")
         .attr("class","labelOnLine");
-
-    // text
-    //   .attr("transform", function(d,i){
-    //       if( ){
-    //         return "translate("+ xScale(d.x)+ "," + (yScale(d.y))+ ")";
-    //       }
-    //     })
-    //     .text(function(d,i){
-    //       if( d.year === "2011"){
-    //       return d.capture;          
-    //       }
-    //     })
-    //     .attr("font-family", "'Lato', sans-serif")
-    //     .attr("font-size", "1.3vw")
-    //     .attr("dx","-4.3em")
-    //     .attr("dy", "1.2em")
-    //     .attr("fill", "rgba(115,176,198,0.9)");
 
 
   }

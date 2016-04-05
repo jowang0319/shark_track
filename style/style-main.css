@@ -232,7 +232,7 @@
 /*		background-color: orange;*/
 /*		opacity:0.5;*/
 		float:left;
-		width:69%;
+		width:65%;
 		margin-top: 2%;
 		margin-bottom: 2%;
 		margin-left: 2%;
@@ -339,6 +339,13 @@
 		font-size: 1.3vw;
 	}
 
+	img#test{
+		width: 80%;
+		float: right;
+		position: relative;
+		display: ;
+	}
+
 
 }
 
@@ -397,6 +404,9 @@ a:hover{
 	cursor: pointer;
 }
 
+canvas{
+	background-color: white;
+}
 
 
 
