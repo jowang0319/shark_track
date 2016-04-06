@@ -472,10 +472,15 @@
 
 
 
-	button#selected{
-
+	button.selected{
+	  color: #ffffff;
+	  font-size: 14px;
+	  background: #73b0c6;
+	  padding: 6px 10px 6px 10px;
+	  border: solid #72b0c6 1px;
+	  text-decoration: none;
+	  opacity:0.8;
 	}
-
 
 	button{
 	    color: #72b0c6;
@@ -484,7 +489,8 @@
 		padding: 6px 10px 6px 10px;
 		border: solid #72b0c6 1px;
 		text-decoration: none;
-		margin-bottom: 2%;
+		margin-bottom: 1%;
+/*		margin-right: 0.6%;*/
 	}
 
 	button:hover {

@@ -39,7 +39,7 @@
             d3.select("#button1")
               .on("click", function(d,i){
                   d3.selectAll("button").classed("selected", false);
-                  d3.select(this).classed("selected", true)
+                  d3.select("#button1").classed("selected", true)
                   d3.selectAll("img.mapimgL").style("display", "none");
                   d3.select("img#mapimg1").style("display", "inline");     
               });
