@@ -163,6 +163,12 @@
 	  text-decoration: none;	
 	}
 
+	.labelimg{
+		width: 100%;
+		margin-top: 1%;
+		display: none;
+	}
+
 }
 
 @media all and (min-width: 426px) and (max-width: 768px) {
@@ -325,6 +331,13 @@
 	  background-image: -o-linear-gradient(top, #ffffff, #d5edf5);
 	  background-image: linear-gradient(to bottom, #ffffff, #d5edf5);
 	  text-decoration: none;	
+	}
+
+	.labelimg{
+		width: 60%;
+		margin-top: 1%;
+		margin-left: 20%;
+		display: none;
 	}
 
 }
@@ -501,6 +514,13 @@
 	  background-image: -o-linear-gradient(top, #ffffff, #d5edf5);
 	  background-image: linear-gradient(to bottom, #ffffff, #d5edf5);
 	  text-decoration: none;	
+	}
+
+	.labelimg{
+		width: 50%;
+		margin-top: 1%;
+		margin-left: 25%;
+		display: none;
 	}
 	
 
