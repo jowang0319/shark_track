@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    	<title>Shark Tracking</title>
+
+      <link href='https://fonts.googleapis.com/css?family=Alegreya+SC' rel='stylesheet' type='text/css'>
+      <link href='https://fonts.googleapis.com/css?family=Lato|Oxygen|Muli:300|Sintony' rel='stylesheet' type='text/css'>
+
+        <link href="style/style-main.css" rel="stylesheet" type="text/css">
+
+
+    	<style>
+            .g-background {
+              fill: #e0e9ef;
+            }
+            .g-land {
+              fill: white;
+            }
+            .g-course {
+              fill: none;
+              stroke: #333;
+            }
+            .g-course-crossed {
+              stroke-dasharray: 2,3;
+            }
+            .g-course-points {
+              fill: #fff;
+              stroke: #000;
+              stroke-width: 1.5px;
+            }
+            .g-course-labels {
+              font: bold 11px sans-serif;
+              text-anchor: middle;
+              text-transform: capitalize;
+            }
+            .g-shoreline {
+              fill: none;
+              stroke: none;
+              stroke-width: 1px;
+              stroke-linejoin: round;
+            }
+            .g-trail,
+            .g-track {
+              fill: none;
+              stroke: #000;
+              stroke-linejoin: round;
+              stroke-linecap: round;
+            }
+            .g-track {
+              stroke-opacity: .2;
+            }
+            .g-trail {
+              stroke-width: 1.5px;
+            }
+
+            .g-shark circle {
+              stroke: #000;
+              stroke-opacity: .1;
+              stroke-width: 3px;
+            }
+            .g-trail-linda,
+            .g-track-linda {
+              stroke: #B43030;
+            }
+
+            .g-shark-linda {
+              fill: #B43030;
+            }
+
+            .g-axis .tick-special.tick-linda {
+              fill: #B43030;
+            }
+
+            .g-shark text {
+              text-anchor: middle;
+              fill: white;
+              stroke: none;
+              font-family: Arial;
+              font-size: 9px;
+            }
+
+            .g-axis {
+              font: 10px sans-serif;
+              -webkit-user-select: none;
+              -moz-user-select: none;
+              user-select: none;
+              fill: #777;
+            }
+
+            .g-axis .domain {
+              fill: none;
+              stroke: #fff;
+              stroke-width: 8px;
+              stroke-linecap: round;
+            }
+
+            .g-axis .tick line {
+              stroke: #aaa;
+              shape-rendering: crispEdges;
+            }
+
+            .g-axis .tick-special {
+              font-weight: bold;
+              fill: black;
+            }
+
+            .g-axis .g-halo {
+              fill: none;
+              stroke: #ccc;
+              stroke-width: 10px;
+              stroke-linecap: round;
+            }
+
+            .g-slider .background {
+              cursor: ew-resize !important;
+            }
+
+            .g-slider .g-handle {
+              fill: #fff;
+              stroke: #000;
+              stroke-width: 1.0px;
+              pointer-events: none;
+            }
+
+            .g-city {
+              font-family: Arial;
+              font-size: 11px;
+              fill: #aaa;
+            }
+
+            .g-island {
+              font-family: Arial;
+              font-size: 10px;
+              fill: #000;
+              fill-opacity: 0.3;
+            }
+
+
+    	</style>
+    </head>
+
+    <body>
+       <div id="container-main">
+            <div class="content-main">
+                <!-- <button id="button2">Click for a smooth animation.</button> -->
+                <div class="g-graphic">
+                    <button id="g-play-button">Pause</button>
+                </div>
+            </div>
+            <div class="control-main">
+                <div class="arrow-left"><a href="tag.html"><img src="image/arrow-left1.png" alt="leftArrow"  width="100%"></a></div>
+                <div class="title-main"><h2 class="title-content">Result</h2></div>
+                <div class="arrow-right"><a href="map.html"><img src="image/arrow-right1.png" alt="rightArrow"  width="100%"></a></div>
+                <div class="intro"><p class="intro-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla, commodo a sodales sed, dignissim pretium nunc. Nam et lacus neque. Sed volutpat ante id mauris laoreet vestibulum. Nam blandit felis non neque cursus aliquet. Morbi vel enim dignissim massa dignissim commodo vitae quis tellus. Nunc non mollis nulla. Sed consectetur elit id mi consectetur bibendum. Ut enim massa, sodales tempor convallis et, iaculis ac massa. Etiam suscipit nisl eget lorem pellentesque quis iaculis mi mattis. Aliquam sit amet purus lectus. Maecenas tempor ornare sollicitudin.</p></div>
+            </div>
+       </div>
+
+    </body>
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <script src="http://d3js.org/queue.v1.min.js"></script>
+        <script src="http://d3js.org/topojson.v1.min.js"></script>
+        <!-- <script src="http://graphics8.nytimes.com/newsgraphics/2013/09/25/americas-cup/cce5c9caaa826312daf3baa050bf80c1a8653d45/lib.js"></script> -->
+<script>
+/*Thank's to Mike Bostock's work in http://www.nytimes.com/interactive/2013/09/25/sports/americas-cup-course.html?_r=0 We learnt a lot from that! :) */
+
+
+
+
+    (function() {
+
+var width = parseInt(d3.select(".g-graphic").style("width"))
+    height = parseInt(d3.select(".g-graphic").style("height"));
+var   brushHeight = 60;
+
+var moving,
+    minValue,
+    maxValue,
+    currentValue,
+    targetValue,
+    trailLength = 30,
+    alpha = .25;
+
+//var formatMinute = d3.format("+.0f");
+var formatDate = d3.time.format("%B");
+
+var x = d3.scale.linear()
+    .range([110, width - 40])
+    .clamp(true);
+
+var xTicks = {
+  "2/20/11 0:00": "Start",
+  "5/28/13 17:43": "Linda",
+  //"1448": "Kent"
+};
+
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom")
+    .tickFormat(function(t) {console.log(t); return /*xTicks[t] ||*/ "2011." + (t*2 + 200)/100 ; })
+    .tickSize(12, 0)
+    .tickPadding(0);
+
+var brush = d3.svg.brush()
+    .x(x)
+    .extent([0, 0])
+    .on("brush", brushed);
+
+var projection = d3.geo.mercator()
+    .center([-65, 30])
+    .scale(width*8/9)
+    .translate([width / 2, height / 2 + 30])
+    .clipExtent([[0, 0], [width, height + 1]])
+    .precision(0);
+
+var path = d3.geo.path()
+    .projection(projection)
+    .pointRadius(3.5);
+
+var playButton = d3.select("#g-play-button");
+
+var svg = d3.select(".g-graphic").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+svg.append("rect")
+    .attr("class", "g-background")
+    .attr("width", width)
+    .attr("height", height + 1);
+
+  // console.log(sharks[0].coordinates[0][0]);
+
+var slider,
+    handle,
+    track,
+    trail,
+    shark,
+    gate;
+
+
+queue()
+    .defer(d3.json, "data/countries.json")
+    .defer(d3.csv, "data/linda.csv", type)
+    //.defer(d3.csv, "data/kent.csv", type)
+    .await(ready);
+
+function ready(error, topo, linda, kent) {
+
+
+  var course = topojson.feature(topo, topo.objects.units);
+
+  indexOffset = -linda[0][2]; // offset from time -> index
+  var sharks = [
+    {type: "LineString", id: "linda", coordinates: linda}/*,
+    {type: "LineString", id: "kent", coordinates: kent}*/
+  ];
+
+  // console.log(sharks[0].coordinates[0][0]);
+
+  minValue = -indexOffset + trailLength;
+  maxValue = currentValue = targetValue = linda.length - indexOffset - 1;
+ 
+console.log(maxValue);
+
+  x.domain([minValue, maxValue]);
+  xAxis.tickValues(d3.range(0, targetValue, 100)/*.concat(-180, d3.keys(xTicks))*/);
+
+  svg.append("path")
+      .datum(topojson.mesh(topo, topo.objects.units))
+      .attr("class", "g-shoreline")
+      .attr("d", path);
+
+  svg.append("path")
+      .datum(topojson.feature(topo, topo.objects.units))
+      .attr("class", "g-land")
+      .attr("d", path);
+
+  gate = svg.append("g")
+      .attr("class", "g-course")
+    .selectAll("path")
+      .data(course.features.filter(function(d) { return d.geometry.type === "LineString"; }))
+    .enter().append("path")
+      .attr("class", function(d) { return "g-course-" + d.id; })
+      .attr("d", path);
+
+  svg.append("path")
+      .datum({type: "MultiPoint", coordinates: d3.merge(course.features.map(function(d) { return d.geometry.type === "LineString" ? d.geometry.coordinates : [d.geometry.coordinates]; }))})
+      .attr("class", "g-course-points")
+      .attr("d", path);
+
+/*  svg.append("g")
+      .attr("class", "g-course-labels")
+    .selectAll("text")
+      .data(topojson.feature(topo, topo.objects.labels).features)
+    .enter().append("text")
+      .attr("transform", function(d) { return "translate(" + projection(d.geometry.coordinates) + ")"; })
+      .attr("dy", ".35em")
+      .text(function(d) { return d.id; });*/
+
+  var gX = svg.append("g")
+      .attr("class", "g-x g-axis")
+      .attr("transform", "translate(0," + brushHeight / 2 + ")")
+      .call(xAxis);
+
+  gX.select(".domain")
+    .select(function() { return this.parentNode.insertBefore(this.cloneNode(true), this); })
+      .attr("class", "g-halo");
+
+  var tick = gX.selectAll(".tick")
+      .each(function() { this.parentNode.appendChild(this); });
+
+  tick.select("line")
+      .attr("y1", -8)
+      .attr("y2", 8);
+
+  tick.filter(function(d) { return d in xTicks; })
+      .attr("class", function(d) { return "tick tick-special tick-" + xTicks[d].toLowerCase(); });
+
+  slider = svg.append("g")
+      .attr("class", "g-slider")
+      .call(brush);
+
+  slider.selectAll(".extent,.resize")
+      .remove();
+
+  slider.select(".background")
+      .attr("height", brushHeight);
+
+  handle = slider.append("circle")
+      .attr("class", "g-handle")
+      .attr("transform", "translate(0," + brushHeight / 2 + ")")
+      .attr("r", 8);
+
+  track = svg.selectAll(".g-track")
+    // .data(sharks)
+    // .enter()
+    .append("path")
+      .attr("class", function(d) { return "g-track g-track-" + d.id; });
+
+  trail = svg.selectAll(".g-trail")
+      .data(sharks)
+    .enter().append("path")
+      .attr("class", function(d) { return "g-trail g-trail-" + d.id; });
+
+  shark = svg.selectAll(".g-shark")
+      .data(sharks)
+    .enter().append("g")
+      .attr("class", function(d) { return "g-shark g-shark-" + d.id; })
+
+  shark.append("circle").attr("r", 7);
+
+  shark.append("text")
+      .text("L")
+      .attr("dy", "0.3em")
+
+  d3.select(window)
+      .on("keydown", keydowned);
+
+
+   svg.append("text")
+      .attr("x", width / 6)
+      .attr("y", height / 2.5)
+      .attr("class", "g-city")
+      .text("United States");
+
+   svg.append("text")
+      .attr("x", width *5/6)
+      .attr("y", height *2/3)
+      .attr("class", "g-island")
+      .text("N. Atlantic Ocean");
+
+  playButton
+      .on("click", paused)
+      .each(paused);
+}
+
+function paused() {
+  if (slider.node().__transition__) {
+    slider.interrupt();
+    this.textContent = "Play";
+  } else {
+    if (currentValue === maxValue) slider
+        .call(brush.extent([currentValue = minValue, currentValue]))
+        .call(brush.event)
+        .call(brushBackground);
+
+    targetValue = maxValue;
+
+    slider.transition()
+        .duration((targetValue - currentValue) / (targetValue - minValue) * 20000)
+        .ease("linear")
+        .call(brush.extent([targetValue, targetValue]))
+        .call(brush.event)
+        .call(brushBackground);
+
+    this.textContent = "Pause";
+  }
+}
+
+function keydowned() {
+  if (d3.event.metaKey || d3.event.altKey) return;
+  switch (d3.event.keyCode) {
+    case 37: targetValue = Math.max(x.domain()[0], currentValue - trailLength); break;
+    case 39: targetValue = Math.min(x.domain()[1], currentValue + trailLength); break;
+    default: return;
+  }
+  playButton.text("Play");
+  slider.interrupt();
+  move();
+  d3.event.preventDefault();
+}
+
+function brushed() {
+  if (d3.event.sourceEvent) { // not a programmatic event
+    if (d3.event.sourceEvent.target.parentNode === this) { // clicked on the brush
+      playButton.text("Play");
+      targetValue = x.invert(d3.mouse(this)[0]);
+      move();
+    }
+  } else {
+    currentValue = brush.extent()[0];
+    handle.attr("cx", x(currentValue));
+    var i = Math.round(currentValue) + indexOffset;
+    gate.classed("g-course-crossed", function(d) { return currentValue >= d.properties.time; });
+    shark.attr("transform", function(d) { return "translate(" + projection(d.coordinates[i]) + ")"; });
+    track.attr("d", function(d) { return path({type: "LineString", coordinates: d.coordinates.slice(0, i + 1)}); });
+    trail.attr("d", function(d) { return path({type: "LineString", coordinates: d.coordinates.slice(Math.max(0, i - trailLength), i + 1)}); });
+  }
+}
+
+function brushBackground() {
+  slider.select(".background")
+      .attr("x", -40)
+      .attr("width", width + 40);
+}
+
+function move() {
+  var copyValue = currentValue; // detect interrupt
+  if (moving) return false;
+  moving = true;
+
+  d3.timer(function() {
+    if (copyValue !== currentValue) return !(moving = false);
+
+    copyValue = currentValue = Math.abs(currentValue - targetValue) < 1e-3
+        ? targetValue
+        : targetValue * alpha + currentValue * (1 - alpha);
+
+    slider
+        .call(brush.extent([currentValue, currentValue]))
+        .call(brush.event)
+        .call(brushBackground);
+
+    return !(moving = currentValue !== targetValue);
+  });
+}
+
+function type(d) {
+  return [+d.x, +d.y, +d.t];
+}
+
+function resize(){
+    var width = parseInt(d3.select(".g-graphic").style("width"))
+    height = parseInt(d3.select(".g-graphic").style("height"));
+
+    svg 
+    .attr("width", width)
+    .attr("height", height);
+
+svg.select(".g-background")
+    .attr("width", width)
+    .attr("height", height + 1);
+
+    x.range([110, width - 40]);
+
+    xAxis
+        .tickFormat(function(t) {console.log(t); return /*xTicks[t] ||*/ "2011." + (t*2 + 200)/100 ; })
+        .tickSize(12, 0)
+        .tickPadding(0);
+
+    var projection = d3.geo.mercator()
+        .center([-65, 30])
+        .scale(width*8/9)
+        .translate([width / 2, height / 2 + 30])
+        .clipExtent([[0, 0], [width, height + 1]])
+        .precision(0);
+
+    var path = d3.geo.path()
+        .projection(projection)
+        .pointRadius(3.5);
+
+    queue()
+        .defer(d3.json, "data/countries.json")
+        .defer(d3.csv, "data/linda.csv", type)
+        .await(redraw);
+
+    function redraw(error, topo, linda, kent) {
+    var sharks = [
+    {type: "LineString", id: "linda", coordinates: linda}/*,
+    {type: "LineString", id: "kent", coordinates: kent}*/
+  ];
+
+  x.domain([minValue, maxValue]);
+  xAxis.tickValues(d3.range(0, targetValue, 100)/*.concat(-180, d3.keys(xTicks))*/);
+
+  svg.select(".g-shoreline")
+      .attr("d", path);
+
+  svg.select(".g-land")
+      .attr("d", path);
+
+   brush 
+    .x(x)
+
+  gate 
+  // = svg.append("g")
+  //     .attr("class", "g-course")
+  //   .selectAll("path")
+  //     .data(course.features.filter(function(d) { return d.geometry.type === "LineString"; }))
+  //   .enter().append("path")
+    .transition()
+      // .attr("class", function(d) { return "g-course-" + d.id; })
+      .attr("d", path);
+
+  svg.select(".g-course-points")
+      .transition()
+      .attr("d", path);
+
+
+    svg.select(".g-x g-axis")
+      .attr("transform", "translate(0," + brushHeight / 2 + ")")
+      .call(xAxis);
+
+    svg.select(".g-x g-axis")
+        .select(function() { return this.parentNode.insertBefore(this.cloneNode(true), this); })
+
+
+
+    svg.selectAll(".tick")
+      .each(function() { this.parentNode.appendChild(this); });
+
+
+  svg.selectAll(".tick").filter(function(d) { return d in xTicks; })
+      .attr("class", function(d) { return "tick tick-special tick-" + xTicks[d].toLowerCase(); });
+
+  svg.select(".g-slider")
+      .call(brush);
+
+  slider.selectAll(".extent,.resize")
+      .remove();
+
+  slider.select(".background")
+      .attr("height", brushHeight);
+
+  slider.select(".g-handle")
+      .attr("transform", "translate(0," + brushHeight / 2 + ")");
+
+
+  track
+    .data(sharks)
+    .transition()
+
+
+  trail
+    .data(sharks)
+    .transition()
+     
+
+  shark
+    .data(sharks)
+    .transition()
+      
+
+  d3.select(window)
+      .on("keydown", keydowned);
+
+
+  svg.select(".g-city").transition()
+      .attr("x", width / 6)
+      .attr("y", height / 2.5)
+      .text("United States");
+
+  svg.select(".g-island")
+        .transition()
+      .attr("x", width *5/6)
+      .attr("y", height *2/3)
+      .text("N. Atlantic Ocean");
+
+  playButton
+      .on("click", paused)
+      .each(paused);
+}
+
+
+
+
+
+}
+
+d3.select(window).on('resize',resize);
+
+
+})()
+
+
+
+
+
+</script>
+       
+
+</html>
+        

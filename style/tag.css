@@ -277,7 +277,7 @@
 		margin-right: 3%;
 	}
 	p.intro-content{
-		font-size: 1.0vw;
+		font-size: 1.2vw;
 		margin-top: 5%;
 		margin-left: 2%;
 		margin-right: 2%;
@@ -314,6 +314,7 @@
 	padding-right: 5%;
 	color:white;
 	border-radius: 25px;
+	overflow: auto;
 	}
 
 
