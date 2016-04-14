@@ -334,19 +334,19 @@ console.log(maxValue);
       .attr("r", 8);
 
   track = svg.selectAll(".g-track")
-    // .data(sharks)
-    // .enter()
+    .data(sharks)
+    .enter()
     .append("path")
       .attr("class", function(d) { return "g-track g-track-" + d.id; });
 
   trail = svg.selectAll(".g-trail")
       .data(sharks)
-    .enter().append("path")
+      .enter().append("path")
       .attr("class", function(d) { return "g-trail g-trail-" + d.id; });
 
   shark = svg.selectAll(".g-shark")
       .data(sharks)
-    .enter().append("g")
+      .enter().append("g")
       .attr("class", function(d) { return "g-shark g-shark-" + d.id; })
 
   shark.append("circle").attr("r", 7);
@@ -515,13 +515,7 @@ svg.select(".g-background")
     .x(x)
 
   gate 
-  // = svg.append("g")
-  //     .attr("class", "g-course")
-  //   .selectAll("path")
-  //     .data(course.features.filter(function(d) { return d.geometry.type === "LineString"; }))
-  //   .enter().append("path")
     .transition()
-      // .attr("class", function(d) { return "g-course-" + d.id; })
       .attr("d", path);
 
   svg.select(".g-course-points")
