@@ -79,7 +79,7 @@
 
     .g-graphic{
     	width: 100%;
-          height: 45vh;
+          height: 50vh;
           position: absolute;
     }
 
@@ -259,7 +259,7 @@
 
     .g-graphic{
     	width: 100%;
-        height: 55vh;
+        height: 60vh;
           position: absolute;
     }
 
@@ -437,8 +437,9 @@
 
     .g-graphic{
     	width:67%;
-    	height:75%;
+    	height:80%;
     	position: absolute;
+    	margin-top: 2%;
     }
 
     .arrow-left{
@@ -602,10 +603,19 @@ a:hover{
 	cursor: pointer;
 }
 
-	
+#g-play-button {
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  margin: 0;
+  width: 68px;
+  height: 30px;
+}
 
 
-
+button{
+	cursor: pointer;
+}
 
 
 
