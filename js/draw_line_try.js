@@ -91,7 +91,7 @@ d3.csv("data/data_long.csv", function(error, data) {
             .attr("r", 10);
           tooltip
             .style("display", null) // this removes the display none setting from it
-            .html("<p>" + d.capture + " sharks were captured in " + d.year);
+            .html("<p>" + d.capture + " tons of sharks were captured in " + d.year);
           }
 
   function mousemoveFunc(d) {

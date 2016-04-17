@@ -377,7 +377,40 @@
 	canvas{
 		width: 84% !important;
 		margin-left: -17%;
-}
+		height: 65vh !important;
+	}
+
+	.detailSmallIMG{
+		float:left;
+		width:24%;
+		margin-right: 1%;
+		cursor: pointer;
+	}
+
+	.detailSmallIMG:hover{
+		opacity:0.6;
+	}
+
+	#detailSmall{
+		height:9.5vh;
+		overflow: hidden;
+		position:absolute;
+		bottom:20vh;
+		width:63%;
+	}
+
+	#detailLarge{
+		overflow: hidden;
+		position:absolute;
+		width:65%;
+		height: 65vh;
+		background-color: white;
+		display:none;
+	}
+
+	.detailLargeIMG{
+		height:100%;
+	}
 
 
 }

@@ -19,14 +19,15 @@
        <div id="container-main">
             <div class="content-main">
                 <div id="canvas" ></div>
-                
-                
+                <div id="detailLarge"><img class="detailLargeIMG" id="detailImg2" src="image/detail2.png" alt="3d satellite tag detail"/><img class="detailLargeIMG" id="detailImg2" src="image/detail3.jpg" alt="3d satellite tag on shark"/><img class="detailLargeIMG" id="detailImg2" src="image/detail4.jpg" alt="3d satellite tag picture 2"/></div>
+                <div id="detailSmall"><img class="detailSmallIMG" id="smallImg1" src="image/detail1S.png" alt="3d motion"/><img class="detailSmallIMG" id="smallImg2" src="image/detail2S.png" alt="detail"/><img class="detailSmallIMG" id="smallImg3" src="image/detail3S.png" alt="picture on shark"/><img id="smallImg4" class="detailSmallIMG" src="image/detail4S.png" alt="picture2"/></div>
             </div>
+
             <div class="control-main">
                 <div class="arrow-left"><a href="intro.html"><img src="image/arrow-left1.png" alt="leftArrow"  width="100%"></a></div>
                 <div class="title-main"><h2 class="title-content">Satellite Tag</h2></div>
                 <div class="arrow-right"><a href="main.html"><img src="image/arrow-right1.png" alt="rightArrow"  width="100%"></a></div>
-                <div class="intro"><p class="intro-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla, commodo a sodales sed, dignissim pretium nunc. Nam et lacus neque. Sed volutpat ante id mauris laoreet vestibulum. Nam blandit felis non neque cursus aliquet. Morbi vel enim dignissim massa dignissim commodo vitae quis tellus. Nunc non mollis nulla. Sed consectetur elit id mi consectetur bibendum. Ut enim massa, sodales tempor convallis et, iaculis ac massa. Etiam suscipit nisl eget lorem pellentesque quis iaculis mi mattis. Aliquam sit amet purus lectus. Maecenas tempor ornare sollicitudin.</p></div>
+                <div class="intro"><p class="intro-content">Satellite tags are a common tool used by scientists to track shark movements. This is a 3d model of a type of satellite tag called a Smart Position and Temperature Transmitting (SPOT) tag. These types of tags can remotely relay information on the movements of sharks in near real time via satellites. SPOT tags are commonly mounted to shark fins. </p></div>
             </div>
        </div>
 
@@ -39,7 +40,13 @@
         <script src="js/OrbitControls.js"></script>
         <script src="js/stats.min.js"></script>
         <script type="text/javascript" src="js/tag.js"></script>
-
+        <script>
+            d3.select("#smallImg2")
+              .on("click", function(d,i){
+                  d3.selectAll(".detailLargeIMG").style("display", "none");
+                  d3.select("#detailImg2").style("display", "null");
+              });
+        </script>
         
 
 </html>
