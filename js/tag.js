@@ -67,7 +67,7 @@ var lesson6 = {
     this.container.appendChild( this.stats.domElement );
 
     // add directional light
-    var dLight = new THREE.DirectionalLight(0xffffff, 1.5);
+    var dLight = new THREE.DirectionalLight(0xffffff, 0);
     dLight.castShadow = true;
     dLight.position.set(0, 200, 0);
     this.scene.add(dLight);
@@ -82,19 +82,53 @@ var lesson6 = {
   },
   loadModel: function() {
 
+    // // prepare loader and load the model
+    // var oLoader = new THREE.OBJMTLLoader();
+    // oLoader.load('js/tag12.obj', 'js/tag12.mtl', function(object) {
+
+    //   var SCREEN_WIDTH = window.innerWidth ,
+    //     SCREEN_HEIGHT = window.innerHeight ;
+
+    //   object.position.x = -45;
+    //   object.position.y = 0;
+    //   object.position.z = 0;
+    //   object.scale.set(SCREEN_WIDTH/500, SCREEN_WIDTH/500, SCREEN_WIDTH/500);
+    //   lesson6.scene.add(object);
+    // });
+
     // prepare loader and load the model
-    var oLoader = new THREE.OBJMTLLoader();
-    oLoader.load('js/tag12.obj', 'js/tag12.mtl', function(object) {
+      var oLoader = new THREE.OBJLoader();
+      oLoader.load('js/tag12.obj', function(object, materials) {
 
-      var SCREEN_WIDTH = window.innerWidth ,
-        SCREEN_HEIGHT = window.innerHeight ;
+        var colorCus = new THREE.Color("rgb(27, 26, 26)");
 
-      object.position.x = -45;
-      object.position.y = 0;
-      object.position.z = 0;
-      object.scale.set(SCREEN_WIDTH/500, SCREEN_WIDTH/500, SCREEN_WIDTH/500);
-      lesson6.scene.add(object);
-    });
+        // var material = new THREE.MeshFaceMaterial(materials);
+        var material2 = new THREE.MeshLambertMaterial({ colorCus});
+
+        var SCREEN_WIDTH = window.innerWidth ,
+            SCREEN_HEIGHT = window.innerHeight ;
+
+        object.traverse( function(child) {
+          if (child instanceof THREE.Mesh) {
+
+            // apply custom material
+            child.material = material2;
+
+            // enable casting shadows
+            child.castShadow = true;
+            child.receiveShadow = true;
+          }
+        });
+        
+        object.position.x = -45;
+        object.position.y = 0;
+        object.position.z = 0;
+        object.scale.set(SCREEN_WIDTH/500, SCREEN_WIDTH/500, SCREEN_WIDTH/500);
+        lesson6.scene.add(object);
+      });
+
+
+
   }
 };
 
