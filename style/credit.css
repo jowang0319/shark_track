@@ -1,0 +1,177 @@
+@media all and (max-width: 420px) {
+  	div.content-main{
+		width:100%;
+		height:30vh;
+	}
+
+	div.control-main{
+		width:100%;
+		height:70vh;
+		position: fixed;
+		overflow: scroll;
+	}
+
+	video#show{
+		width:100%;
+	}
+
+	p#credits{
+		width:90%;
+		text-align: center;
+		margin-left: 2.5%;
+	}
+
+	span.credit-title{
+		color: white;
+		font-family: 'Martel', serif;
+		font-size: 3vh;
+	}
+
+	p.credits-detail{
+		color: white;
+		font-family: 'lato', sans-serif;
+		font-size: 2vh;
+		text-align: center;
+		width:90%;
+		line-height: 150%;
+		margin-bottom: 2vh;
+		margin-left: 2.5%;
+	}
+
+}
+
+@media all and (min-width: 426px) and (max-width: 768px) {
+	div.content-main{
+		width:100%;
+		height:40vh;
+	}
+
+	div.control-main{
+		width:100%;
+		height:70vh;
+		position: fixed;
+		overflow: scroll;
+	}
+
+	video#show{
+		width:100%;
+	}
+
+	p#credits{
+		width:90%;
+		text-align: center;
+		margin-left: 2.5%;
+	}
+
+	span.credit-title{
+		color: white;
+		font-family: 'Martel', serif;
+		font-size: 3vh;
+	}
+
+	p.credits-detail{
+		color: white;
+		font-family: 'lato', sans-serif;
+		font-size: 2vh;
+		text-align: center;
+		width:90%;
+		line-height: 150%;
+		margin-bottom: 2vh;
+		margin-left: 2.5%;
+	}
+	
+
+}
+
+
+@media all and (min-width: 769px) {
+	div.content-main{
+		width:50%;
+		height:100vh;
+		float:left;
+	}
+
+	div.control-main{
+		width:50%;
+		height:100vh;
+		float:right;
+	}
+
+	video#show{
+		width:100%;
+		margin-top:15vh;
+	}
+
+	p#credits{
+		width:80%;
+		text-align: center;
+		margin-top: 20vh;
+
+	}
+
+	span.credit-title{
+		color: white;
+		font-family: 'Martel', serif;
+		font-size: 3vh;
+	}
+
+	p.credits-detail{
+		color: white;
+		font-family: 'lato', sans-serif;
+		font-size: 2vh;
+		text-align: center;
+		width:80%;
+		line-height: 150%;
+		margin-bottom: 2vh;
+	}
+
+	
+
+}
+
+  
+/*#container-main {
+  background-color: blue;
+  opacity:0.5;
+  width: 100%;
+  height: 860px;
+}*/
+
+body{
+	background-color: black;
+}
+
+span.category{
+		color:rgb(207,227,232);
+	}
+
+
+
+a:hover{
+	opacity: 0.7;
+}
+
+a{
+	color: white;
+	text-decoration: none;
+}
+
+a:visited{
+	color:white;
+	text-decoration: none;
+}
+
+a#email{
+	color:rgb(207,227,232);
+}
+
+
+
+
+
+
+
+
+
+
+

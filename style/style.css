@@ -232,6 +232,8 @@ article {
 
 a:link{
   color: white;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 a:visited {

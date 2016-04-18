@@ -307,7 +307,7 @@
 		overflow: hidden;
 		position:absolute;
 		width:95%;
-		height: 45%;
+		height: 50%;
 		background-color: white;
 		/*display:none;*/
 	}
@@ -462,7 +462,7 @@
 		overflow: hidden;
 		position:absolute;
 		bottom:20vh;
-		width:63%;
+		width:65%;
 	}
 
 	#detailLarge{
