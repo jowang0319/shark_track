@@ -265,7 +265,7 @@ function ready(error, topo, linda, kent) {
 console.log(maxValue);
 
   x.domain([minValue, maxValue]);
-  xAxis.tickValues(d3.range(0, targetValue, 100)/*.concat(-180, d3.keys(xTicks))*/);
+  xAxis.tickValues(d3.range(0, targetValue, 150)/*.concat(-180, d3.keys(xTicks))*/);
 
   svg.append("path")
       .datum(topojson.mesh(topo, topo.objects.units))
@@ -360,14 +360,14 @@ console.log(maxValue);
 
 
    svg.append("text")
-      .attr("x", width / 6)
+      .attr("x", width / 7)
       .attr("y", height / 2.5)
       .attr("class", "g-city")
       .text("United States");
 
    svg.append("text")
-      .attr("x", width *5/6)
-      .attr("y", height *2/3)
+      .attr("x", width *5/7)
+      .attr("y", height *3/4)
       .attr("class", "g-island")
       .text("N. Atlantic Ocean");
 
@@ -572,14 +572,14 @@ svg.select(".g-background")
 
 
   svg.select(".g-city").transition()
-      .attr("x", width / 6)
+      .attr("x", width / 7)
       .attr("y", height / 2.5)
       .text("United States");
 
   svg.select(".g-island")
         .transition()
-      .attr("x", width *5/6)
-      .attr("y", height *2/3)
+      .attr("x", width *5/7)
+      .attr("y", height *3/4)
       .text("N. Atlantic Ocean");
 
   playButton
