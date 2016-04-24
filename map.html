@@ -22,8 +22,15 @@
                 <button id="button1">Habitate Area</button>
                 <button id="button2">Longline Fishing Area</button>
                 <button id="button3">Overlap Area</button>
-                <div id="mapL" ><img class="mapimgL" id="mapimg1" src="image/map1.png"/><img class="mapimgL" id="mapimg2" src="image/map2.png"/><img class="mapimgL" id="mapimg3" src="image/map3.png"/></div>
-                <div id="label"><img class="labelimg" id="maplabel1" src="image/label1.png"/><img class="labelimg" id="maplabel2" src="image/label2.png"/><img class="labelimg" id="maplabel3" src="image/label3.png"/></div>
+                <div id="mapL" >
+                  <img class="mapimgL" id="mapimg4" src="image/map-04.png"/>
+                  <img class="mapimgL" id="mapimg1" src="image/map-01.png"/>
+                  <img class="mapimgL" id="mapimg2" src="image/map-02.png"/>
+                  <img class="mapimgL" id="mapimg3" src="image/map-03.png"/>
+                </div>
+                <div id="label">
+                  <img class="labelimg" id="maplabel1" src="image/label1.png"/><img class="labelimg" id="maplabel2" src="image/label2.png"/><img class="labelimg" id="maplabel3" src="image/label3.png"/>
+                </div>
                 <!-- <div class="mapS"><img class="mapimgS" id="mapimg1" src="image/map1mobile.png"/><img class="mapimgS" id="mapimg2" src="image/map2mobile.png"/><img class="mapimgS" id="mapimg3" src="image/map3mobile.png"/></div> -->
             </div>
             <div class="control-main">
@@ -38,6 +45,8 @@
     </body>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
         <script>
+            d3.select("img#mapimg4").style("display", "inline");
+
             d3.select("#button1")
               .on("click", function(d,i){
                   d3.selectAll("button").classed("selected", false);
