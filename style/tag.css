@@ -139,6 +139,7 @@
 		height:6vh;
 		overflow: hidden;
 		width:100%;
+		position:absolute;
 
 	}
 
@@ -147,6 +148,8 @@
 		width:95%;
 		height: 50%;
 		background-color: white;
+		position:absolute;
+		top:7vh;
 		/*display:none;*/
 	}
 
