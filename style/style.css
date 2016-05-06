@@ -17,16 +17,17 @@ article {
   h1 {
     position: absolute;
     top: 60vh;
-    width: 100%;
-    font-size: 6vw;
-    letter-spacing: 3px;
+    width: 90%;
+    margin-left: 5%;
+    font-size: 3.9vw;
+    letter-spacing: 1px;
     color: #fff;
     font-family: 'Martel', serif;
     text-align: center;
   }
 
   span#author {
-    font-size: 3vw;
+    font-size: 2.5vw;
     /*letter-spacing: 3px;*/
     color: #fff;
     font-family: 'Lato', sans-serif;
@@ -35,7 +36,7 @@ article {
 
   div#short-intro {
     font-size: 3.5vw;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     color: #fff;
     font-family: 'Lato', sans-serif;
     margin-left: 3%;
@@ -90,9 +91,10 @@ article {
   h1 {
     position: absolute;
     top: 60vh;
-    width: 100%;
+    width: 80%;
+    margin-left: 10%;
     font-size: 3vw;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     color: #fff;
     font-family: 'Martel', serif;
     text-align: center;
@@ -111,8 +113,8 @@ article {
     letter-spacing: 2px;
     color: #fff;
     font-family: 'Lato', sans-serif;
-    margin-left: 25%;
-    margin-right: 25%;
+    margin-left: 20%;
+    margin-right: 20%;
     text-align: center;
     margin-top: 200%;
   }
@@ -163,12 +165,13 @@ article {
   h1 {
     position: absolute;
     top: 60%;
-    width: 100%;
-    font-size: 3vw;
-    letter-spacing: 3px;
+    width: 50%;
+    font-size: 2vw;
+    letter-spacing: 2px;
     color: #fff;
     font-family: 'Martel', serif;
     text-align: center;
+    margin-left: 25%;
   }
 
   span#author {

@@ -21,14 +21,17 @@
                 <div id="canvas" ></div>
                 <div id="detailLarge">
                     <img class="detailLargeIMG" id="detailImg2" src="image/detail2.png" alt="3d satellite tag detail"/>
-                    <img class="detailLargeIMG" id="detailImg3" src="image/detail3.png" alt="3d satellite tag on shark"/>
-                    <img class="detailLargeIMG" id="detailImg4" src="image/detail4.JPG" alt="3d satellite tag picture 2"/>
+                    <video class="detailLargeIMG" id="detailImg3" controls autoplay loop>
+                        <source src="video/sharkntag.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                        </video>
+                    <img class="detailLargeIMG" id="detailImg4" src="image/detail3.JPG" alt="3d satellite tag picture 2"/>
                 </div>
                 <div id="detailSmall">
-                    <img class="detailSmallIMG" id="smallImg1" src="image/detail1S.png" alt="3d motion"/>
-                    <img class="detailSmallIMG" id="smallImg2" src="image/detail2S.png" alt="detail"/>
-                    <img class="detailSmallIMG" id="smallImg3" src="image/detail3S.png" alt="picture on shark"/>
-                    <img class="detailSmallIMG" id="smallImg4" src="image/detail4S.png" alt="picture2"/>
+                    <button id="button1">Tag detail</button>
+                    <button id="button2">3D model</button>
+                    <button id="button3">Tag on Shark</button>
+                    <button id="button4">Photo</button>
                 </div>
             </div>
 
@@ -50,33 +53,44 @@
         <script type="text/javascript" src="js/tag.js"></script>
         <script>
         d3.selectAll(".detailLargeIMG").style("display", "none");
-        d3.select("#detailLarge").style("display", "none");
-            d3.select("#smallImg2")
+        d3.select("#detailLarge").style("display", "inline");
+        d3.select("#detailImg2").style("display","inline")
+        d3.select("#detailLarge").style("display", "inline");
+        d3.select("#button1").classed("selected",true)
+            d3.select("#button1")
               .on("click", function(d,i){
                 console.log("clicked");
                   d3.selectAll(".detailLargeIMG").style("display", "none");
                     d3.select("#detailLarge").style("display", "inline");
                   d3.select("#detailImg2").style("display", "inline");
+                d3.selectAll("button").classed("selected", false);
+                  d3.select(this).classed("selected", true)
               });
-             d3.select("#smallImg3")
+             d3.select("#button3")
               .on("click", function(d,i){
                 console.log("clicked");
                   d3.selectAll(".detailLargeIMG").style("display", "none");
                     d3.select("#detailLarge").style("display", "inline");
                   d3.select("#detailImg3").style("display", "inline");
+                d3.selectAll("button").classed("selected", false);
+                  d3.select(this).classed("selected", true)
               });
-             d3.select("#smallImg4")
+             d3.select("#button4")
               .on("click", function(d,i){
                 console.log("clicked");
                   d3.selectAll(".detailLargeIMG").style("display", "none");
                     d3.select("#detailLarge").style("display", "inline");
                   d3.select("#detailImg4").style("display", "inline");
+                d3.selectAll("button").classed("selected", false);
+                  d3.select(this).classed("selected", true)
               });
-             d3.select("#smallImg1")
+             d3.select("#button2")
               .on("click", function(d,i){
                 console.log("clicked");
                   d3.selectAll(".detailLargeIMG").style("display", "none");
                   d3.select("#detailLarge").style("display", "none");
+                  d3.selectAll("button").classed("selected", false);
+                  d3.select(this).classed("selected", true)
                     
               });
 

@@ -124,13 +124,13 @@ d3.csv("data/data_long.csv", function(error, data) {
       .style("display","none");
       // .attr("d", line);
 
-  graph.append("text")
-      // .attr("x", 0)
-      // .attr("y","20vh")
-      .text("· Hover over the line to see more details.")
-      .attr("class","notice")
-      .attr("fill","#ccc")
-      .attr("stroke","rgba(0,0,0,0)");
+  // graph.append("text")
+  //     // .attr("x", 0)
+  //     // .attr("y","20vh")
+  //     .text("· Hover over the line to see more details.")
+  //     .attr("class","notice")
+  //     .attr("fill","#ccc")
+  //     .attr("stroke","rgba(0,0,0,0)");
 
 
   function getSmoothInterpolation() {

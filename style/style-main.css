@@ -175,6 +175,14 @@
 		display: none;
 	}
 
+	h1#line-head{
+		position:fixed;
+		top:7%;
+		font-size: 2.7vw;
+		margin-left: 2%;
+		font-family: 'muli',sans-serif; 
+	}
+
 }
 
 @media all and (min-width: 426px) and (max-width: 768px) {
@@ -200,7 +208,7 @@
   	}
 
   	p.intro-content{
-	font-size: 2.2vw;
+	font-size: 2.4vw;
 	margin-top: 3%;
 	color:white;
 	padding-left: 1%;
@@ -350,6 +358,14 @@
 		margin-top: 1%;
 		margin-left: 20%;
 		display: none;
+	}
+
+	h1#line-head{
+		position:fixed;
+		top:7%;
+		font-size: 2.5vw;
+		margin-left: 2%;
+		font-family: 'muli',sans-serif; 
 	}
 
 }
@@ -543,6 +559,14 @@
 		margin-top: 1%;
 		margin-left: 25%;
 		display: none;
+	}
+
+	h1#line-head{
+		position:fixed;
+		top:12%;
+		font-size: 1.5vw;
+		margin-left: 2%;
+		font-family: 'muli',sans-serif; 
 	}
 	
 
