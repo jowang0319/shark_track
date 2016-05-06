@@ -140,16 +140,17 @@
 		overflow: hidden;
 		width:100%;
 		position:absolute;
-
+		margin-left: 1%;
 	}
 
 	#detailLarge{
 		overflow: hidden;
 		width:95%;
+		margin-left: 1%;
 		height: 50%;
 		background-color: white;
 		position:absolute;
-		top:7vh;
+		top:9vh;
 		/*display:none;*/
 	}
 
