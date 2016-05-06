@@ -175,6 +175,15 @@
 		display: none;
 	}
 
+	button.selected{
+	  color: #ffffff;
+	  background: #73b0c6;
+	  padding: 3px 3px 3px 3px;
+	  border: solid #72b0c6 1px;
+	  text-decoration: none;
+	  opacity:0.8;
+	}
+
 }
 
 @media all and (min-width: 426px) and (max-width: 768px) {
@@ -350,6 +359,15 @@
 		margin-top: 1%;
 		margin-left: 20%;
 		display: none;
+	}
+
+	button.selected{
+	  color: #ffffff;
+	  background: #73b0c6;
+	  padding: 6px 10px 6px 10px;
+	  border: solid #72b0c6 1px;
+	  text-decoration: none;
+	  opacity:0.8;
 	}
 
 }

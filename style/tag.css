@@ -124,7 +124,7 @@
 		opacity: 0;
 	}
 
-	.detailSmallIMG{
+/*	.detailSmallIMG{
 		float:left;
 		width:23%;
 		margin-right: 1%;
@@ -133,20 +133,17 @@
 
 	.detailSmallIMG:hover{
 		opacity:0.6;
-	}
+	}*/
 
 	#detailSmall{
-		height:9.5vh;
+		height:6vh;
 		overflow: hidden;
-		position:absolute;
-		bottom:30vh;
 		width:100%;
-		margin-right: 
+
 	}
 
 	#detailLarge{
 		overflow: hidden;
-		position:absolute;
 		width:95%;
 		height: 50%;
 		background-color: white;
@@ -154,7 +151,7 @@
 	}
 
 	.detailLargeIMG{
-		width:100%;
+		width: 100%;
 
 	}
 
@@ -165,7 +162,8 @@
 		padding: 3px 3px 3px 3px;
 		border: solid #72b0c6 1px;
 		text-decoration: none;
-		margin-bottom: 2%;
+		margin-bottom: 0%;
+		margin-top: 2%;
 	}
 
 	button:hover {
@@ -176,6 +174,15 @@
 	  background-image: -o-linear-gradient(top, #ffffff, #d5edf5);
 	  background-image: linear-gradient(to bottom, #ffffff, #d5edf5);
 	  text-decoration: none;	
+	}
+
+	button.selected{
+	  color: #ffffff;
+	  background: #73b0c6;
+	  padding: 3px 3px 3px 3px;
+	  border: solid #72b0c6 1px;
+	  text-decoration: none;
+	  opacity:0.8;
 	}
 
 }
@@ -304,7 +311,7 @@
 		opacity: 0;
 	}
 
-	.detailSmallIMG{
+/*	.detailSmallIMG{
 		float:left;
 		width:23%;
 		margin-right: 1%;
@@ -313,15 +320,13 @@
 
 	.detailSmallIMG:hover{
 		opacity:0.6;
-	}
+	}*/
 
 	#detailSmall{
-		height:9.5vh;
-		overflow: hidden;
-		position:absolute;
 		bottom:30vh;
 		width:100%;
-		margin-right: 
+		margin-left: 1%;
+		margin-top:2%;
 	}
 
 	#detailLarge{
@@ -331,6 +336,7 @@
 		height: 50%;
 		background-color: white;
 		/*display:none;*/
+		margin-left: 2%;
 	}
 
 	.detailLargeIMG{
@@ -357,6 +363,17 @@
 	  background-image: linear-gradient(to bottom, #ffffff, #d5edf5);
 	  text-decoration: none;	
 	}
+
+	button.selected{
+	  color: #ffffff;
+	  background: #73b0c6;
+	  padding: 6px 10px 6px 10px;
+	  border: solid #72b0c6 1px;
+	  text-decoration: none;
+	  opacity:0.8;
+	}
+
+
 
 }
 
@@ -488,23 +505,22 @@
 		height: 65vh !important;
 	}
 
-	.detailSmallIMG{
+/*	.detailSmallIMG{
 		float:left;
 		width:24%;
 		margin-right: 1%;
 		cursor: pointer;
-	}
+	}*/
 
-	.detailSmallIMG:hover{
+/*	.detailSmallIMG:hover{
 		opacity:0.6;
-	}
+	}*/
 
 	#detailSmall{
-		height:9.5vh;
-		overflow: hidden;
-		position:absolute;
+		height:2vh;
 		bottom:20vh;
 		width:65%;
+		margin-top: 4%;
 	}
 
 	#detailLarge{
